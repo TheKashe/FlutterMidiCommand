@@ -3,7 +3,7 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'package:flutter_midi_command_platform_interface/flutter_midi_command_platform_interface.dart';
 export 'package:flutter_midi_command_platform_interface/flutter_midi_command_platform_interface.dart'
-    show MidiDevice;
+    show MidiDevice,MidiData;
 
 class MidiCommand {
   factory MidiCommand() {
@@ -62,6 +62,13 @@ class MidiCommand {
   /// The event contains the raw bytes contained in the MIDI package.
   Stream<Uint8List> get onMidiDataReceived {
     return _platform.onMidiDataReceived;
+  }
+  
+  /// Stream firing events whenever a midi package is received.
+  ///
+  /// The event contains the MidiData wrapped raw bytes contained in the MIDI package.
+  Stream<MidiData> get onMidiDataReceivedTS {
+    return _platform.onMidiDataReceivedTS;
   }
 
   /// Stream firing events whenever a change in the MIDI setup occurs.
