@@ -56,8 +56,8 @@ class NoteOnMessage extends MidiMessage {
   void send() {
     data = Uint8List(3);
     data[0] = 0x90 + channel;
-    data[1] = note;
-    data[2] = velocity;
+    data[1] = note ?? 0;
+    data[2] = velocity ?? 0;
     super.send();
   }
 }
@@ -73,8 +73,8 @@ class NoteOffMessage extends MidiMessage {
   void send() {
     data = Uint8List(3);
     data[0] = 0x80 + channel;
-    data[1] = note;
-    data[2] = velocity;
+    data[1] = note ?? 0;
+    data[2] = velocity ?? 0;
     super.send();
   }
 }
